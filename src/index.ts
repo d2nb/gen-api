@@ -2,7 +2,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import rimraf from 'rimraf';
 import { generateApi } from 'swagger-typescript-api';
-import type { GenerateApiParams } from 'swagger-typescript-api';
+import type { GenerateApiParams, GenerateApiParamsFromUrl } from 'swagger-typescript-api';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,6 +23,12 @@ export async function genApi(params?: GenerateApiParams) {
     ...defaultParams,
     ...params,
   };
+
+  if (finalParams.input.startsWith('http')) {
+    (finalParams as GenerateApiParamsFromUrl).url = finalParams.input;
+    finalParams.input = undefined;
+  }
+
   await rimraf(finalParams.output as string);
   generateApi(finalParams);
 }
