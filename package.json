@@ -1,10 +1,10 @@
 {
   "name": "@shit-dev/gen-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate TypeScript API via OpenAPI",
   "type": "module",
   "bin": {
-    "gen-shit-api": "./dist/cli.cjs"
+    "shit-gen-api": "./dist/cli.cjs"
   },
   "exports": {
     ".": {

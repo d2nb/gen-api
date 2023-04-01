@@ -17,7 +17,14 @@ const {
 
 const cwd = process.cwd();
 
+function resolvePath(p: string) {
+  if (p.startsWith('http')) {
+    return p;
+  }
+  return path.resolve(cwd, p);
+}
+
 genApi({
-  input: path.resolve(cwd, input),
-  output: path.resolve(cwd, output),
+  input: resolvePath(input),
+  output: resolvePath(output),
 });
