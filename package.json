@@ -1,0 +1,50 @@
+{
+  "name": "@shit-dev/gen-api",
+  "version": "1.0.0",
+  "description": "Generate TypeScript API via OpenAPI",
+  "type": "module",
+  "bin": {
+    "gen-shit-api": "./dist/cli.cjs"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "template"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d2nb/gen-api"
+  },
+  "scripts": {
+    "build": "rimraf dist && unbuild",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "openapi",
+    "typescript"
+  ],
+  "author": "d2nb",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "typescript": "^5.0.2",
+    "unbuild": "^1.1.2"
+  },
+  "dependencies": {
+    "minimist": "^1.2.8",
+    "rimraf": "^4.4.1",
+    "swagger-typescript-api": "^12.0.4"
+  }
+}

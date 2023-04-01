@@ -1,0 +1,23 @@
+<%
+const { apiConfig, generateResponses, config } = it;
+%>
+
+import axios, { AxiosRequestConfig } from 'axios';
+
+export interface RequestParams {
+  [key: string]: any;
+}
+
+const instance = axios.create({
+  timeout: 8000,
+});
+
+export function fetcher<T> (config: AxiosRequestConfig) {
+  return instance.request<T>(config).then(
+    res => res.data,
+    err => {
+      console.log('错误处理')
+      return Promise.reject(err)
+    }
+  )
+}
